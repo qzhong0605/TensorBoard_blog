@@ -10,4 +10,49 @@ Tensorboad的主要工作就是解析event格式文件或者database数据库文
 * Plugins：Tensorboard遵循的是WSGI方式运行Web程序，每个Plugin组合多个apps（按照WSGI的方式）response每个request
 * Frontend：每个Plugins返回的reponse由Frontend生成html并显示
 ### Debug with ipdb
+ipdb是pdb的增强版本，提供了更加友好的提示功能和颜色高亮。TensorBoard运行过程中默认生成了一个守护线程/进程来加载和解析数据，所以采用python的ipdb module方式并无法调试Tensorboard。为了能够采用ipdb调试,采用在python文件引入函数调用的方式。
+
+下面以event process 过程来说明ipdb的使用。在`tensorboard/backend/event_processing/event_file_loader.py`文件的`class RawEventFileLoader`的`Load`方法加入如下代码：
+``` Load function
+ 48   def Load(self):
+ 49     """Loads all new events from disk as raw serialized proto bytestrings. \n
+ 50
+ 51     Calling Load multiple times in a row will not 'drop' events as long as the
+ 52     return value is not iterated over.
+ 53
+ 54     Yields:
+ 55       All event proto bytestrings in the file that have not been yielded yet.
+ 56     """
+ 57     import ipdb; ipdb.set_trace() # Debug Event
+ 58     logger.debug('Loading events from %s', self._file_path)
+ ```
+运行如下命令，重新build和运行tensorboard
+``` build and run tensorboard
+bazel run tensorboard -- --logdir=/tmp/images_demo/box_to_gaussian  --port=10050
+```
+这样在运行过程中就可以看到TensorBoard的event读取过程
+``` view the backtrace 
+     57     import ipdb; ipdb.set_trace() # Debug Event
+---> 58     logger.debug('Loading events from %s', self._file_path)
+     59
+```
+接下来就是正常的ipdb的命令，具体的ipdb的操作可以使用help
+``` ipdb help 
+ipdb> help
+
+Documented commands (type help <topic>):
+========================================
+EOF    cl         disable  interact  next    psource  rv         unt
+a      clear      display  j         p       q        s          until
+alias  commands   down     jump      pdef    quit     source     up
+args   condition  enable   l         pdoc    r        step       w
+b      cont       exit     list      pfile   restart  tbreak     whatis
+break  continue   h        ll        pinfo   return   u          where
+bt     d          help     longlist  pinfo2  retval   unalias
+c      debug      ignore   n         pp      run      undisplay
+
+Miscellaneous help topics:
+==========================
+exec  pdb
+```
 ### Debug with Logging 
