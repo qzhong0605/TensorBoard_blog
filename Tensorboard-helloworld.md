@@ -1,5 +1,5 @@
 ## MNIST: An hello-world example for Tensorflow with Tensorboard
-Tensorboard 是一种可视化的工具，可以用来很好的辅助模型训练，提高模型训练的效率，熟练掌握Tensorboard工具对于从事Deep Learning开发很有必要。本文主要通过MNIST这个示例来说明TensorBoard的使用，以及Tensorboard的构建编译等过程。
+Tensorboard 是一种可视化的工具，可以用来很好的辅助模型训练，提高模型训练的效率，熟练掌握Tensorboard工具对于从事Deep Learning开发很有必要。本文主要通过MNIST这个示例来说明使用编译产生的Tensorboard的过程。
 ### Overview
 Deep Learning一般包括Train和Inference两个阶段：在Train的过程，根据输入数据和optimization方法，采用iterative method得到最后的模型参数；在Inference的过程，根据输入的数据，模型产生结果。然而模型train的过程，需要不断调整参数，比如learning rate、weight decay等，为了更好的查看当前模型的收敛情况，收集模型训练过程中产生的data信息，并可视化他们，可以很好的有利于模型训练。
 
@@ -57,10 +57,26 @@ bazel build //tensorboard
 ```
 * 运行 TensorBoard
 ``` run TensorBoard
-bazel run tensorboard -- --logdir=/tmp/images_demo --host=0.0.0.0 --port=10050 
+bazel run tensorboard -- --logdir=/tmp/images_demo --host=0.0.0.0 --port=10050  # logdir、host、port等都可以配置
 ```
 * 查看 TensorBoard 的帮助命令选项 
 ``` help tensorboard
 bazel run tensorboard -- --help
 ```
 ### Run on TensorFlow with Tensorboard
+* 下载mnist的example代码，mnist代码存在tensorflow代码库 
+```
+git clone https://github.com/tensorflow/tensorflow
+```
+* 进入 mnist示例程序目录
+```
+cd tensorflow/examples/tutorials/mnist
+```
+* 运行带有summary的mnist示例
+```
+python mnist_with_summaries.py --log_dir /tmp/mnist     # log_dir存储用于tensorboard解析文件目录路径
+```
+* 启动 TensorBoard 解析数据
+```
+cd <TensorBoard root dir> && bazel run tensorboard -- --logdir=/tmp/mnist --host=0.0.0.0 --port=10050 
+```
