@@ -80,3 +80,11 @@ python mnist_with_summaries.py --log_dir /tmp/mnist     # log_dir存储用于ten
 ```
 cd <TensorBoard root dir> && bazel run tensorboard -- --logdir=/tmp/mnist --host=0.0.0.0 --port=10050 
 ```
+* 运行mnist示例，产生的scalar数据，如下所示
+![scalar_image](mnist_images/mnist_plugin_scalar.jpeg)
+
+* 运行mnist示例，生成的神经网络结构，如下所示
+![graph_image](mnist_images/mnist_plugin_graph.jpeg)
+
+* 运行mnist示例，输入的数据，如下所示
+![data_image](mnist_images/mnist_plugin_image.jpeg)
