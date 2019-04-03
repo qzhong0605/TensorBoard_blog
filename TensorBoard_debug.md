@@ -1,6 +1,8 @@
 ## Tensorboard的调试
+### Overview
 Tensorboard是Google开发的用于Deep Learning可视化的工具，可以可视化Deep Learning过程中的image、text等数据、训练产生的loss、accuracy等scalar数据、profile模型训练过程中GPU等device的使用率等情况。Tensorboard和Tensorflow之间是一个相对解藕的，也就是说Tensorboard不怎么依赖TensorFlow，其中大部分需要的是TensorFLow去解析Event文件，TensorBoard根据各个Plugins定义的操作可视化Event文件数据内容。
 ### Introduction 
+Tensorboard是大部分采用python和javascript两种语言编写的，并内置了很多插件。目前在Tensorboard-1.13版本上包含了[Image](https://github.com/tensorflow/tensorboard/tree/master/tensorboard/plugins/image), [Scalar](https://github.com/tensorflow/tensorboard/tree/master/tensorboard/plugins/scalar), [Text](https://github.com/tensorflow/tensorboard/tree/master/tensorboard/plugins/text), [Audio](https://github.com/tensorflow/tensorboard/tree/master/tensorboard/plugins/audio), [Graph](https://github.com/tensorflow/tensorboard/tree/master/tensorboard/plugins/graph),[Debugger](https://github.com/tensorflow/tensorboard/tree/master/tensorboard/plugins/debugger), [Histogram](https://github.com/tensorflow/tensorboard/tree/master/tensorboard/plugins/histogram), [Distribution](https://github.com/tensorflow/tensorboard/tree/master/tensorboard/plugins/histogram), [Interactive_inference](https://github.com/tensorflow/tensorboard/tree/master/tensorboard/plugins/interactive_inference), [Profile](https://github.com/tensorflow/tensorboard/tree/master/tensorboard/plugins/profile)等。多数情况下Tensorboard插件可以满足需要，然而有时候需要根据具体情况去定制Tensorboard插件，或者开发新的TensorBoard插件，在这种情况下，需要去调试debug TensorBoard，熟悉TensorBoard的工作流程以及功能模块。TensorBoard涉及到了多进程和多线程，所以调试有点麻烦。
 ### The process for Tensorboard 
 ### Debug with ipdb
 ### Debug with Logging 
