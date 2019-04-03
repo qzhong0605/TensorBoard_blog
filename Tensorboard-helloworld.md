@@ -44,7 +44,7 @@ wget -c https://github.com/bazelbuild/bazel/releases/download/0.24.1/bazel-0.24.
 ```
 * Install bazel
 ``` install bazel
-sh bazel-0.24.0-installer-linux-x86_64.sh --prefix=<dir>  # 具体环境需要执行dir路径
+sh bazel-0.24.0-installer-linux-x86_64.sh --prefix=<dir>  # 具体环境需要执行dir路径, 并更新环境变量PATH，使之包含bazel
 ```
 ### Build && Run TensorBoard 
 * 下载Tensorboard代码
