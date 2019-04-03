@@ -46,5 +46,21 @@ wget -c https://github.com/bazelbuild/bazel/releases/download/0.24.1/bazel-0.24.
 ``` install bazel
 sh bazel-0.24.0-installer-linux-x86_64.sh --prefix=<dir>  # 具体环境需要执行dir路径
 ```
-### Build
-### Run with Tensorboard
+### Build && Run TensorBoard 
+* 下载Tensorboard代码
+``` Download Tensorboard 
+git clone https://github.com/tensorflow/tensorboard
+```
+* 编译 TensorBoard 
+``` compile Tensorboard
+bazel build //tensorboard
+```
+* 运行 TensorBoard
+``` run TensorBoard
+bazel run tensorboard -- --logdir=/tmp/images_demo --host=0.0.0.0 --port=10050 
+```
+* 查看 TensorBoard 的帮助命令选项 
+``` help tensorboard
+bazel run tensorboard -- --help
+```
+### Run on TensorFlow with Tensorboard
