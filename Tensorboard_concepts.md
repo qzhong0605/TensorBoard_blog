@@ -62,7 +62,8 @@ def is_active(self):
 ```
 ### WSGI
 WSGI是Web Server Gateway Interface, 它是一种规范说明，用于明确web server和web applications之间的通信方式以及web applications之间
-协同工作处理来自客户端的请求。它是用于运行python的web service。
+协同工作处理来自客户端的请求。它是用于运行python的web service。整体WSGI流程如下：
+![WSGI](concepts/web-browser-server-wsgi.png)
 ### Summary
 ### FileVersion
 ### Run
