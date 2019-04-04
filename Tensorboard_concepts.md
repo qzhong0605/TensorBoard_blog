@@ -130,4 +130,11 @@ def is_active(self):
 WSGI是Web Server Gateway Interface, 它是一种规范说明，用于明确web server和web applications之间的通信方式以及web applications之间
 协同工作处理来自客户端的请求。它是用于运行python的web service。整体WSGI流程如下：
 ![WSGI](concepts/web-browser-server-wsgi.png)
-### Run
+### Tag 
+Tag 是一个字符串，是TensorBoard用来组织Tensorboard内部数据；Tag的名字是唯一的，而且Tag的名字组织方式是层次化，比如 `foo/bar/0`
+### API layer
+API Layer 是用于告诉如何生成生成TensorBoard可以解析的数据内容，目前TensorBoard支持的数据格式包括EventFile和SQLite。
+### Backend
+Backend 是TensorBoard用于读取解析数据文件内容、处理来自Tensorboard client的请求的模块，具体处理方式为`python`
+### Frontend
+Frontend 是 Tensorboard用于显示TensorBoard处理来自client的请求之后的response的模块，具体处理方式包括html、js等
