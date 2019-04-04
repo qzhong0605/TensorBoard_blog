@@ -10,4 +10,4 @@
 ### Design of TensorBoard
 * [TensorBoard-concepts](Tensorboard_concepts.md)
 ### Plugins of TensorBoard
-* [TensorBoard-debug](Tensorboard_debug.md)
+* [TensorBoard-debug](TensorBoard_debug.md)
