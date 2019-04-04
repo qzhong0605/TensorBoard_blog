@@ -51,9 +51,13 @@ sh bazel-0.24.0-installer-linux-x86_64.sh --prefix=<dir>  # 具体环境需要�
 ``` Download Tensorboard 
 git clone https://github.com/tensorflow/tensorboard
 ```
+* 进入python虚拟环境
+```
+source tensorboard-dev/bin/active 
+```
 * 编译 TensorBoard 
 ``` compile Tensorboard
-bazel build //tensorboard
+cd tensorboard && bazel build //tensorboard
 ```
 * 运行 TensorBoard
 ``` run TensorBoard
