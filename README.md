@@ -9,5 +9,6 @@
 * [Tensorboard-profile-plugin](Tensorboard_plugin_profile.md)
 ### Design of TensorBoard
 * [TensorBoard-concepts](Tensorboard_concepts.md)
+* [TensorBoard-build](Tensorboard_build.md)
 ### Plugins of TensorBoard
 * [TensorBoard-debug](TensorBoard_debug.md)
