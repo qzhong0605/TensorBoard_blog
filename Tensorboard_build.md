@@ -42,6 +42,9 @@ bazel run //tensorboard/plugins/image:images_demo
 ```
 bazel run tensorboard -- --logdir=/tmp/images_demo  --port=10050   # 端口以及存储的数据路径根据具体情况更改
 ```
+* 运行结果如下图 
+
+![image_plugin](build/image_plugin.jpeg)
 2. Scalar Plugin
 * 运行如下代码，生成Scalar插件可以识别的数据
 ```sh
@@ -51,3 +54,6 @@ bazel run //tensorboard/plugins/scalar:scalars_demo
 ```
 bazel run tensorboard -- --logdir=/tmp/scalars_demo  --port=10050   # 端口以及存储的数据路径根据具体情况更改
 ```
+* 运行结果如下图 
+
+![scalar_plugin](build/scalar_plugin.jpeg)
